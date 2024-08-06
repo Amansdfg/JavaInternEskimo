@@ -1,8 +1,8 @@
 # Location System
 
 ## Overview
-
-The Location System is a web application designed for managing user locations and sharing them with other users. It provides functionalities for registering users, creating and sharing locations, and accessing shared locations.
+It’s required to implement a web-server that will provide functionality for users and his locations. 
+Person can have multiple locations (zero or one are possible), for example home, parent's home, office, etc. Owner of the location can share location with friends (users from the system). Owner can share location to friends either with read only access or with admin access. Admin access allows friend user to add other friends to the owner's location. One user can have his own locations and be added to different shared locations. 
 
 ## Features
 
@@ -12,12 +12,11 @@ The Location System is a web application designed for managing user locations an
 - **Location Access:** View shared locations and manage shared access.
 
 ## Technologies
-
 - **Backend:** Java 8, Spring Boot 2.6.4
 - **Database:** In-memory database
 - **Testing:** Spock Framework 1.3-groovy-2.4
 - **Build Management:** Gradle 6.8.3
-
+-**Mapping:**  MapStruct 1.4.2.Final 
 ## Setup
 
 ### Prerequisites
