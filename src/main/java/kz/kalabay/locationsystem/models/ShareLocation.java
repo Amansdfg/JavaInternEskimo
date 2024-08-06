@@ -9,7 +9,6 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name="shareLocations")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder

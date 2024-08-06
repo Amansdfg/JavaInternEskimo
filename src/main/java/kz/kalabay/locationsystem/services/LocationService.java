@@ -18,6 +18,9 @@ public class LocationService {
     private LocationRepository locationRepository;
 
     public Location createLocation(Location location) {
+        if(location == null){
+            throw new IllegalArgumentException("Location cannot be null");
+        }
         return locationRepository.save(location);
     }
     public List<Location> getLocationsByOwnerId(Long ownerId) {

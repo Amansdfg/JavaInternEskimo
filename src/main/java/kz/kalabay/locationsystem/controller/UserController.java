@@ -21,12 +21,20 @@ public class UserController {
     private LocationService locationService;
 
     @PostMapping
-    public ResponseEntity<UserDto> registerUser(@RequestBody UserDto userDTO) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(userService.registerUser(userDTO));
+    public ResponseEntity<?> registerUser(@RequestBody UserDto userDTO) {
+        try {
+            return ResponseEntity.status(HttpStatus.CREATED).body(userService.registerUser(userDTO));
+        }catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
     @GetMapping("/{id}/locations")
-    public ResponseEntity<List<Location>> getLocationByUserId(@PathVariable("id") Long userId) {
-        return ResponseEntity.ok(locationService.getLocationsByOwnerId(userId));
+    public ResponseEntity<?> getLocationByUserId(@PathVariable("id") Long userId) {
+        try {
+            return ResponseEntity.ok(locationService.getLocationsByOwnerId(userId));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
     @GetMapping("/all")
     public List<UserDto>getAllUsers() {

@@ -4,6 +4,7 @@ import kz.kalabay.locationsystem.models.dtos.UserDto;
 import kz.kalabay.locationsystem.mapper.MapperUser;
 import kz.kalabay.locationsystem.models.User;
 import kz.kalabay.locationsystem.repositories.UserRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +16,11 @@ public class UserService {
     private  UserRepository userRepository;
     @Autowired
     private MapperUser mapperUser;
-    public UserDto registerUser(UserDto userDTO) {
-        User user=new User();
+    public UserDto registerUser(UserDto userDTO){
+        if(userDTO==null){
+            throw new IllegalArgumentException("userDTO is null");
+        }
+        User user = new User();
         user.setEmail(userDTO.getEmail());
         return mapperUser.mapToDTO(userRepository.save(user));
     }

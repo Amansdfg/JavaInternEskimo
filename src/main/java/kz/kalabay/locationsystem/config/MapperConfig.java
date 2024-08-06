@@ -1,4 +1,4 @@
-package kz.kalabay.locationsystem;
+package kz.kalabay.locationsystem.config;
 
 import kz.kalabay.locationsystem.mapper.MapperUser;
 import org.springframework.context.annotation.Bean;

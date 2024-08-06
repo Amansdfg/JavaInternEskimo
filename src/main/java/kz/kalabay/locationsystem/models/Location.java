@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name="locations")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
