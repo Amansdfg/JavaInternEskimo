@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
+@Table(name="locations")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -18,6 +19,6 @@ public class Location {
     private  Long id;
     private String name;
     private String address;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private User owner;
 }

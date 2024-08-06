@@ -9,6 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
+@Table(name="shareLocations")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -16,9 +17,9 @@ public class ShareLocation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Location location;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private User user;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
