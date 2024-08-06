@@ -44,8 +44,8 @@ Person can have multiple locations (zero or one are possible), for example home,
   - **Request Body:**
     ```json
     {
-      "name": "John Doe",
-      "email": "john.doe@example.com"
+      "name": "Aman Kalabay",
+      "email": "aman@example.com"
     }
     ```
   - **Response:**
@@ -54,8 +54,8 @@ Person can have multiple locations (zero or one are possible), for example home,
       ```json
       {
         "id": 1,
-        "name": "John Doe",
-        "email": "john.doe@example.com"
+        "name": "Aman Kalabay",
+        "email": "aman@example.com"
       }
       ```
 
@@ -69,8 +69,8 @@ Person can have multiple locations (zero or one are possible), for example home,
       [
         {
           "id": 1,
-          "name": "Office",
-          "address": "456 Elm St"
+          "name": "Home",
+          "address": "97 Estemesove st"
         }
       ]
       ```
@@ -84,8 +84,8 @@ Person can have multiple locations (zero or one are possible), for example home,
       ```json
       [
         {
-          "name": "John Doe",
-          "email": "john.doe@example.com"
+          "name": "Aman Kalabay",
+          "email": "aman@example.com"
         }
       ]
       ```
@@ -98,8 +98,11 @@ Person can have multiple locations (zero or one are possible), for example home,
   - **Request Body:**
     ```json
     {
-      "name": "Office",
-      "address": "456 Elm St"
+       "name": "Home",
+       "address": "97 Estemesove st",
+       "owner":{
+          "id":1
+       }
     }
     ```
   - **Response:**
@@ -108,8 +111,8 @@ Person can have multiple locations (zero or one are possible), for example home,
       ```json
       {
         "id": 1,
-        "name": "Office",
-        "address": "456 Elm St"
+        "name": "Home",
+        "address": "97 Estemesove st"
       }
       ```
 
@@ -146,8 +149,8 @@ Person can have multiple locations (zero or one are possible), for example home,
       [
         {
           "id": 1,
-          "name": "Office",
-          "address": "456 Elm St"
+          "name": "Home",
+          "address": "97 Estemesove st"
         }
       ]
       ```
@@ -181,8 +184,8 @@ Person can have multiple locations (zero or one are possible), for example home,
       [
         {
           "id": 2,
-          "name": "Jane Smith",
-          "email": "jane.smith@example.com"
+          "name": "Ol",
+          "email": "ol@example.com"
         }
       ]
       ```
