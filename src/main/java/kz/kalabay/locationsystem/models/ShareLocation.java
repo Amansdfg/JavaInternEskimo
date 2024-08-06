@@ -20,11 +20,8 @@ public class ShareLocation {
     @ManyToOne(fetch = FetchType.EAGER)
     private Location location;
     @ManyToOne(fetch = FetchType.EAGER)
-    private User user;
+    private User shareFriend;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private AccessType accessType;
-    public enum AccessType{
-        READ_ONLY,ADMIN
-    }
 }

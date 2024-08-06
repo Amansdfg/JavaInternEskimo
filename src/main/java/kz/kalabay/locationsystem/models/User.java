@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Entity
@@ -17,11 +19,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(unique = true,nullable = false)
+    @Email
+    @NotBlank
     private String email;
-    @Column(unique = true,nullable = false)
-    private String name;
-    @ManyToMany(fetch = FetchType.EAGER)
-    private List<User> friends;
 }

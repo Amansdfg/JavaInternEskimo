@@ -1,14 +1,27 @@
+#spring:
+#  main:
+#    allow-circular-references: true
+#  datasource:
+#    url: jdbc:postgresql://localhost:5435/partnerTest
+#    driverClassName: org.h2.Driver
+#    username: sa
+#    password:
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#
+#    show-sql: true
+#  h2:
+#    console:
+#      enabled: false
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5435/partnerTest
-    driverClassName: org.postgresql.Driver
-    username: postgres
-    password: aman06
-  jpa:
-    hibernate:
-      ddl-auto: update
-      dialect: org.hibernate.dialect.PostgreSQLDialect
-    show-sql: true
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
   h2:
     console:
-      enabled: false
+      enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect

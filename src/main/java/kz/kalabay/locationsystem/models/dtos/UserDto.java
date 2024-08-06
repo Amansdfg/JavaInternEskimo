@@ -1,13 +1,18 @@
-package kz.kalabay.locationsystem.dtos;
+package kz.kalabay.locationsystem.models.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDto {
+    @Email
+    @NotBlank
     private String email;
-    private String name;
 }

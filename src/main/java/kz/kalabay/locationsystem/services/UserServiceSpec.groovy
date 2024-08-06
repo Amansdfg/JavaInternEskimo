@@ -1,6 +1,6 @@
 package kz.kalabay.locationsystem.services
 
-import kz.kalabay.locationsystem.dtos.UserDto
+import kz.kalabay.locationsystem.models.dtos.UserDto
 import kz.kalabay.locationsystem.models.User;
 import spock.lang.Specification
 
