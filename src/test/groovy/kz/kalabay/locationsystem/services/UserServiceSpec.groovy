@@ -1,57 +1,38 @@
+package kz.kalabay.locationsystem.services
+
 import kz.kalabay.locationsystem.mapper.MapperUser
 import kz.kalabay.locationsystem.models.User
 import kz.kalabay.locationsystem.models.dtos.UserDto
 import kz.kalabay.locationsystem.repositories.UserRepository
-import kz.kalabay.locationsystem.services.UserService
-import org.spockframework.spring.SpringBean
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.ActiveProfiles
 import spock.lang.Specification
 
-@SpringBootTest
-@ActiveProfiles("test")
-class UserServiceSpec extends Specification {
-
-    @SpringBean
+class UserServiceSpec extends Specification{
     UserRepository userRepository = Mock()
-
-    @SpringBean
     MapperUser mapperUser = Mock()
-
-    @Autowired
-    UserService userService
-
-    def "should register a user and return user DTO"() {
+    UserService userService = new UserService(userRepository: userRepository, mapperUser: mapperUser)
+    def "should register a user and return user DTO"(){
         given:
-        UserDto userDto = new UserDto(name: "John Doe", email: "john.doe@example.com")
-        User user = new User(id: 1L, name: "John Doe", email: "john.doe@example.com")
-
-        mapperUser.mapToDTO(_) >> userDto
-        userRepository.save(_) >> user
-
+        UserDto userDto =new UserDto(name: "Aman Kalabay", email: "aman@gmail.com")
+        User user =new User(name:"Aman Kalabay", email: "aman@gmail.com")
+        mapperUser.mapToDTO(_) >>userDto
+        userRepository.save(_) >>user
         when:
-        UserDto result = userService.registerUser(userDto)
-
+        UserDto result =userService.registerUser(userDto)
         then:
-        result.name == "John Doe"
-        result.email == "john.doe@example.com"
+        result.name =="Aman Kalabay"
+        result.email =="aman@gmail.com"
     }
-
-    def "should return all users as DTOs"() {
+    def "should return all users as DTOs"(){
         given:
-        User user = new User(id: 1L, name: "John Doe", email: "john.doe@example.com")
-        UserDto userDto = new UserDto(name: "John Doe", email: "john.doe@example.com")
-
-        userRepository.findAll() >> [user]
-        mapperUser.mapToDTOList(_) >> [userDto]
-
+        UserDto userDto =new UserDto(name: "Aman Kalabay", email: "aman@gmail.com")
+        User user =new User(name:"Aman Kalabay", email: "aman@gmail.com")
+        userRepository.findAll()>>[user]
+        mapperUser.mapToDTOList([user])>>[userDto]
         when:
-        List<UserDto> result = userService.getAllUsers()
-
+        List<UserDto> result=userService.getAllUsers()
         then:
-        result.size() == 1
-        result[0].name == "John Doe"
-        result[0].email == "john.doe@example.com"
+        result.size()==1
+        result[0].name=="Aman Kalabay"
+        result[0].email=="aman@gmail.com"
     }
 }

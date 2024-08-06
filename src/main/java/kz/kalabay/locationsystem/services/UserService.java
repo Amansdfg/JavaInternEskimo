@@ -21,6 +21,7 @@ public class UserService {
             throw new IllegalArgumentException("userDTO is null");
         }
         User user = new User();
+        user.setName(userDTO.getName());
         user.setEmail(userDTO.getEmail());
         return mapperUser.mapToDTO(userRepository.save(user));
     }

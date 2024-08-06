@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @AllArgsConstructor
@@ -16,6 +18,10 @@ public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
+    @NotBlank
+    private String name;
+    @NotBlank
+    @Pattern(regexp = "\\d+\\s[A-z]+\\s[A-z]+", message = "Address must be in US format (e.g., Estemesova 98)")
     private String address;
     @ManyToOne(fetch = FetchType.EAGER)
     private User owner;

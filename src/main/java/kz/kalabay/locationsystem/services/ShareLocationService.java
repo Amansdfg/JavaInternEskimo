@@ -55,10 +55,18 @@ public class ShareLocationService {
             shareLocationDto.setAccessType(AccessType.READ_ONLY);
             shareLocationDto.setFriendId(shareLocationFriend.getToId());
             shareLocationDto.setOwnerId(shareLocationFriend.getOwnerId());
-            shareLocationWithUser(shareLocationDto);
-            return shareLocation;
+//            shareLocationWithUser(shareLocationDto);
+//            return shareLocation;
+            Location ownerLocation = locationRepository.findLocationByOwner_Id(shareLocationDto.getOwnerId()).orElseThrow(() -> new RuntimeException("User not found"));
+            User share = userRepository.findById(shareLocationDto.getFriendId()).orElseThrow(() -> new RuntimeException("Location not found"));
+            ShareLocation shareLocationa = ShareLocation.builder()
+                    .shareFriend(share)
+                    .location(ownerLocation)
+                    .accessType(shareLocationDto.getAccessType())
+                    .build();
+            return shareLocationRepository.save(shareLocationa);
         }else{
-            throw new RuntimeException("Dont access this friend");
+            throw new RuntimeException("Don't have access to this friend");
         }
     }
 }
