@@ -16,7 +16,7 @@ Person can have multiple locations (zero or one are possible), for example home,
 - **Database:** In-memory database
 - **Testing:** Spock Framework 1.3-groovy-2.4
 - **Build Management:** Gradle 6.8.3
--**Mapping:**  MapStruct 1.4.2.Final 
+- **Mapping:**  MapStruct 1.4.2.Final 
 ## Setup
 
 ### Prerequisites
