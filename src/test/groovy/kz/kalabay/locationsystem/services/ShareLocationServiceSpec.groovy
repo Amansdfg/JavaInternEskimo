@@ -23,7 +23,7 @@ class ShareLocationServiceSpec extends Specification{
         given:
         Long ownerId=1L
         Long friendId=2L
-        Location location=new Location(id: 1L, address: "Estemesove 97",owner:new User(id:ownerId))
+        Location location=new Location(id: 1L, address: "97 Estemesova st",owner:new User(id:ownerId))
         User friend=new User(id: friendId)
         ShareLocationDto dto=new ShareLocationDto(ownerId: ownerId,friendId:friendId,accessType:AccessType.READ_ONLY)
         ShareLocation shareLocation=ShareLocation.builder()
@@ -61,8 +61,8 @@ class ShareLocationServiceSpec extends Specification{
     }
     def "should return all shared locations"(){
         given:
-        Location location1 = new Location(id: 1L, address: "Estemesova 97")
-        Location location2 = new Location(id: 2L, address: "Estemesova 98")
+        Location location1 = new Location(id: 1L, address: "97 Estemesova st")
+        Location location2 = new Location(id: 2L, address: "98 Estemesova st")
         ShareLocation shareLocation1 =ShareLocation.builder().location(location1).build()
         ShareLocation shareLocation2 =ShareLocation.builder().location(location2).build()
         List<ShareLocation> shareLocations =[shareLocation1,shareLocation2]
@@ -78,8 +78,8 @@ class ShareLocationServiceSpec extends Specification{
     def "should return shared locations by user id"(){
         given:
         Long userId=1L
-        Location location1 =new Location(id:1L,address:"123 Main St")
-        Location location2 =new Location(id:2L,address:"456 Elm St")
+        Location location1 =new Location(id:1L,address:"97 Estemesova st")
+        Location location2 =new Location(id:2L,address:"98 Estemesova st")
         ShareLocation shareLocation1 =ShareLocation.builder().location(location1).build()
         ShareLocation shareLocation2 =ShareLocation.builder().location(location2).build()
         List<ShareLocation> shareLocations=[shareLocation1,shareLocation2]
@@ -98,7 +98,7 @@ class ShareLocationServiceSpec extends Specification{
         User owner =new User(id:1L)
         User friend=new User(id:2L)
         User newFriend =new User(id:3L)
-        Location location=new Location(id:1L,address:"Estemesova 97",owner: owner)
+        Location location=new Location(id:1L,address:"97 Estemesova st",owner: owner)
         ShareLocation shareLocation =ShareLocation.builder()
                 .location(location)
                 .shareFriend(friend)

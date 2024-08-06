@@ -22,8 +22,12 @@ public class LocationController {
     @Autowired
     private LocationService locationService;
     @PostMapping
-    public ResponseEntity<Location> registerLocation(@RequestBody Location location) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(locationService.createLocation(location));
+    public ResponseEntity<?> registerLocation(@RequestBody Location location) {
+        try {
+            return ResponseEntity.status(HttpStatus.CREATED).body(locationService.createLocation(location));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
     @PostMapping("/share")
     public ResponseEntity<ShareLocation> shareLocationWithOtherUser(@RequestBody ShareLocationDto shareLocationSto) {

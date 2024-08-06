@@ -14,34 +14,34 @@ class LocationServiceSpec extends Specification {
     LocationService locationService =new LocationService(locationRepository:locationRepository,shareLocationRepository:shareLocationRepository)
     def "should create a location"(){
         given:
-        Location location=new Location(id:1L,address:"Estemesova 97",owner: new User(id:1L))
+        Location location=new Location(id:1L,address:"97 Estemesova st",owner: new User(id:1L))
         locationRepository.save(location)>>location
         when:
         Location result=locationService.createLocation(location)
         then:
         result.id==1L
-        result.address=="Estemesova 97"
+        result.address=="97 Estemesova st"
     }
     def "should return locations by owner id"(){
         given:
         Long ownerId=1L
         User owner =new User(id:ownerId)
-        Location location= new Location(id:1L,address: "Estemesova 97", owner: owner)
+        Location location= new Location(id:1L,address: "97 Estemesova st", owner: owner)
         List<Location> locations=[location]
         locationRepository.findLocationsByOwner_Id(ownerId)>> Optional.of(locations)
         when:
         List<Location> result= locationService.getLocationsByOwnerId(ownerId)
         then:
         result.size()==1
-        result[0].address=="Estemesova 97"
+        result[0].address=="97 Estemesova st"
     }
 
     def "should return locations by user id, including shared and owned"(){
         given:
         Long userId=1L
         User user=new User(id: userId)
-        Location ownedLocation=new Location(id: 1L, address: "Estemesova 97",owner:user)
-        Location sharedLocation=new Location(id: 2L, address: "Estemesova 98",owner:new User(id:2L))
+        Location ownedLocation=new Location(id: 1L, address: "97 Estemesova st",owner:user)
+        Location sharedLocation=new Location(id: 2L, address: "98 Estemesova st",owner:new User(id:2L))
         ShareLocation shareLocation=new ShareLocation(id:2L,location:sharedLocation,shareFriend:user,accessType:AccessType.READ_ONLY)
         List<ShareLocation> shareLocations=[shareLocation]
         List<Location> ownedLocations=[ownedLocation]
@@ -51,7 +51,7 @@ class LocationServiceSpec extends Specification {
         List<Location> result=locationService.getLocationsByUserId(userId)
         then:
         result.size()==2
-        result.find {it.address=="Estemesova 97"}
-        result.find {it.address =="Estemesova 98"}
+        result.find {it.address=="97 Estemesova st"}
+        result.find {it.address =="98 Estemesova st"}
     }
 }

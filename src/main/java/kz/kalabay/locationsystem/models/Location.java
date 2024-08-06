@@ -21,7 +21,7 @@ public class Location {
     @NotBlank
     private String name;
     @NotBlank
-    @Pattern(regexp = "\\d+\\s[A-z]+\\s[A-z]+", message = "Address must be in US format (e.g., Estemesova 98)")
+    @Pattern(regexp = "\\d+\\s[A-z]+\\s[A-z]+", message = "Address must be in US format (e.g., 123 Estemesova st)")
     private String address;
     @ManyToOne(fetch = FetchType.EAGER)
     private User owner;
