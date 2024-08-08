@@ -30,7 +30,7 @@ Person can have multiple locations (zero or one are possible), for example home,
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/your-username/locationsystem.git
+   git clone https://github.com/Amansdfg/locationsystem.git
    cd locationsystem
 ## Usage
 
