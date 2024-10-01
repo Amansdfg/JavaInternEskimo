@@ -27,8 +27,8 @@ public class LocationService {
         return locationRepository.save(location);
     }
     @Cacheable(value = "locations",key = "#ownerId")
-    public List<Location> getLocationsByOwnerId(Long ownerId) {
-        return locationRepository.findLocationsByOwner_Id(ownerId).orElseThrow(()->new RuntimeException("Not found"));
+    public Location getLocationsByOwnerId(Long ownerId) {
+        return locationRepository.findLocationByOwner_Id(ownerId).orElseThrow(()->new RuntimeException("Not found"));
     }
     @Cacheable(value = "userLocations",key = "#userId")
     public List<Location> getLocationsByUserId(Long userId) {
