@@ -8,8 +8,8 @@ import org.mapstruct.Mapping;
 
 @Mapper
 public interface MapperUser {
-    //@Mapping(source = "email", target = "email")
-    //@Mapping(source = "name", target = "name")
+    @Mapping(source = "email", target = "email")
+    @Mapping(source = "name", target = "name")
     UserDto mapToDTO(User user);
     List<UserDto> mapToDTOList(List<User> users);
 }
