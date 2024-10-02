@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ShareLocationFriend {
+
     private Long ownerId;
     private Long friendId;
     private Long toId;

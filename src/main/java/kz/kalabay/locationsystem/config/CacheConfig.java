@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
@@ -19,14 +18,18 @@ import java.time.Duration;
 @Configuration
 @EnableCaching
 public class CacheConfig {
+
     @Value("${spring.redis.host}")
     private String HOST;
     @Value("${spring.redis.port}")
     private Integer PORT;
+
     @Bean
     public RedisConnectionFactory connectionFactory() {
-        return new LettuceConnectionFactory(HOST,PORT);
+
+        return new LettuceConnectionFactory(HOST, PORT);
     }
+
     @Bean
     public RedisCacheManager cacheManager(RedisConnectionFactory connectionFactory) {
 
@@ -35,8 +38,10 @@ public class CacheConfig {
             .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer()));
         return RedisCacheManager.builder(connectionFactory).cacheDefaults(cacheConfiguration).build();
     }
+
     @Bean
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory connectionFactory) {
+
         RedisTemplate<String, Object> template = new RedisTemplate<>();
         template.setConnectionFactory(connectionFactory);
         template.setKeySerializer(new StringRedisSerializer());
