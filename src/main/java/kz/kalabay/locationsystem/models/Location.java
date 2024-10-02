@@ -16,7 +16,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Data
 @Builder
-@RedisHash("Location")
 public class Location implements Serializable {
 
     @Id

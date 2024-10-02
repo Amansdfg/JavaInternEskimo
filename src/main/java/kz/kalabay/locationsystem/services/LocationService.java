@@ -28,6 +28,7 @@ public class LocationService {
         if (location == null) {
             throw new IllegalArgumentException("Location cannot be null");
         }
+
         return locationRepository.save(location);
     }
 
@@ -52,7 +53,9 @@ public class LocationService {
         }
         return locations;
     }
-
+    public List<Location> getLocations() {
+        return locationRepository.findAll();
+    }
     @CacheEvict(value = "locations", allEntries = true)
     public void clearCache() {
 

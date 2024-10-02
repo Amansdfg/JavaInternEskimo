@@ -42,4 +42,8 @@ public class LocationController {
 
         return locationService.getLocationsByUserId(id);
     }
+    @GetMapping("/all")
+    public List<Location> getAllLocations() {
+        return locationService.getLocations();
+    }
 }
