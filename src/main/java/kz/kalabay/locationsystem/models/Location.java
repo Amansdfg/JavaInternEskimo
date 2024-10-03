@@ -16,11 +16,11 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Data
 @Builder
-@RedisHash("Location")
 public class Location implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long id;
+    private Long id;
     @NotBlank
     private String name;
     @NotBlank
