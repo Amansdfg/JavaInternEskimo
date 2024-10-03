@@ -16,11 +16,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class LocationService {
-
-    private final ShareLocationRepository shareLocationRepository;
-    private final LocationRepository locationRepository;
+    @Autowired
+    private  ShareLocationRepository shareLocationRepository;
+    @Autowired
+    private  LocationRepository locationRepository;
 
     @CachePut(value = "locations", key = "#location.owner.id")
     public Location createLocation(Location location) {
